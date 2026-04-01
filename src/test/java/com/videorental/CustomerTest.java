@@ -11,9 +11,9 @@ public class CustomerTest {
 
     Customer customer;
 
-    Movie regularMovie = new Movie(TITLE, 0);;
-    Movie newReleaseMovie = new Movie(TITLE, 1);;
-    Movie childrensMovie = new Movie(TITLE, 2);
+    Movie regularMovie = new RegularMovie(TITLE);
+    Movie newReleaseMovie = new NewReleaseMovie(TITLE);
+    Movie childrensMovie = new ChildrensMovie(TITLE);
 
     public Rental createRental(Movie movieRented, int daysRented) {
         return new Rental(movieRented, daysRented);
@@ -65,7 +65,6 @@ public class CustomerTest {
     @Test
     public void statementForNewReleaseMovieRentalForLessThan3Days() {
         customer.addRental(createRental(newReleaseMovie, 1));
-
 
         assertThat(customer.statement()).isEqualTo(
                 "Rental Record for name_not_important\n" +
@@ -130,7 +129,7 @@ public class CustomerTest {
     @Test
     public void statementForSetPriceCodeOfRegularMovie() {
         // 새로운 영화라 아직 장르 미정
-        Movie newRegularMovie = new Movie(TITLE, -1);
+        Movie newRegularMovie = new RegularMovie(TITLE);
 
         // 장르 Regular로 지정 -> priceCode 입력
         newRegularMovie.setPriceCode(0);
