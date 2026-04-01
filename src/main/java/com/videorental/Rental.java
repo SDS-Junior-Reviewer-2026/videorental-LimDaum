@@ -1,7 +1,7 @@
 package com.videorental;
 
 class Rental {
-	private Movie movie;
+	Movie movie;
 	private int daysRented;
 
 	public Rental(Movie movie, int daysRented) {
@@ -16,4 +16,9 @@ class Rental {
 	public Movie getMovie() {
 		return movie;
 	}
+
+	public double getCharge() {
+		return movie.getChargeFor(getDaysRented());
+	}
+
 }
