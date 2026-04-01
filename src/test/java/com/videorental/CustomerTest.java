@@ -126,4 +126,16 @@ public class CustomerTest {
                         "You earned 4 frequent renter pointers"
         );
     }
+
+    @Test
+    public void statementForSetPriceCodeOfRegularMovie() {
+        // 새로운 영화라 아직 장르 미정
+        Movie newRegularMovie = new Movie(TITLE, -1);
+
+        // 장르 Regular로 지정 -> priceCode 입력
+        newRegularMovie.setPriceCode(0);
+
+        // priceCode 정상 입력 여부 확인
+        assertThat(0).isEqualTo(newRegularMovie.getPriceCode());
+    }
 }
